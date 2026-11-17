@@ -1,9 +1,10 @@
 <!DOCTYPE html>
-<html lang="de"><head>
+<html lang="de">
+<head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>White Panthers – Forum</title>
-<link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@700;900&amp;family=IBM+Plex+Sans:wght@400;500;600&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@700;900&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
 :root{--bg:#eceae4;--surface:#f8f7f3;--ink:#171a1d;--mute:#5d6469;--line:#cfccc3;--ice:#2f6a8d;--ice-ink:#fff;--spot:#171a1d14;color-scheme:light;
 box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
@@ -57,7 +58,9 @@ label{display:block;font-weight:600;font-size:14px;margin:12px 0 4px}
 .rank>summary .cnt{font-weight:600;color:var(--ice)}
 .rank .body{padding:2px 16px 14px;border-top:1px solid var(--line)}
 .row{display:grid;grid-template-columns:1.3fr 1.1fr .9fr auto;gap:8px;margin-top:10px}
-@media(max-width:620px){.row{grid-template-columns:1fr 1fr}.row .ghost{grid-column:span 2}}
+.row.r3{grid-template-columns:1.6fr 1fr auto}
+@media(max-width:620px){.row,.row.r3{grid-template-columns:1fr 1fr}.row .ghost{grid-column:span 2}}
+.neg{color:#b3402f}.pos{color:var(--ice)}@media(prefers-color-scheme:dark){.neg{color:#e58a7a}}
 .bar{display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin-bottom:16px}
 .bar .meta{margin-left:auto}
 table{width:100%;border-collapse:collapse;background:var(--surface);border:1px solid var(--line)}
@@ -82,7 +85,7 @@ th{font-family:"Big Shoulders Display",sans-serif;font-size:20px}
 <main><div class="wrap"><p class="meta" id="mode" role="status"></p><div id="view"></div></div></main>
 <footer class="wrap" id="foot" style="padding-bottom:30px"><button class="ghost" id="eb">Bearbeiten</button></footer>
 
-<script type="application/json" id="state">{"members":[[{"n":"Jhonny Black","d":"","j":""}],[{"n":"Seppel","d":"","j":""}],[{"n":"","d":"","j":""}],[{"n":"","d":"","j":""}],[{"n":"","d":"","j":""}],[{"n":"","d":"","j":""}],[{"n":"","d":"","j":""}],[{"n":"","d":"","j":""}]],"freqs":[{"n":"Hauptkanal","f":"165.8","s":""},{"n":"Notfall und Rückzug","f":"686.8","s":""}],"posts":[{"t":"Willkommen bei den White Panthers","x":"Lest den Kodex und die Regeln, bevor ihr euch in die Mitgliederliste eintragt. Neue Beiträge verfasst nur die Leitung.","a":"Leitung","d":"17.11.2026"}]}</script>
+<script type="application/json" id="state">{}</script>
 <script>
 var SRC="<!DOCTYPE html>\n"+document.documentElement.outerHTML;
 var RANKS=[
@@ -94,7 +97,7 @@ var RANKS=[
 ["White Fur","Vollwertiges Mitglied im Alltag und Einsatz."],
 ["Young Panther","Probezeit, nimmt an Einweisungen teil."],
 ["Cub","Anwärter in der Probezeit."]];
-var NAV=[["start","Start"],["funk","Funk & Codes"],["mitglieder","Mitglieder"],["kodex","Kodex"],["regeln","Regeln"]];
+var NAV=[["start","Start"],["funk","Funk & Codes"],["mitglieder","Mitglieder"],["konto","Gangkonto"],["kodex","Kodex"],["regeln","Regeln"]];
 var KODEX=[
 ["Loyalität","Die Gang steht über dem Einzelnen. Wer einen Panther angreift, greift alle an."],
 ["Schweigen","Was intern besprochen wird, bleibt intern. Keine Namen, Pläne oder Treffpunkte nach außen."],
@@ -136,12 +139,12 @@ var CODES=[
 
 var S={};try{S=JSON.parse(document.getElementById("state").textContent)}catch(e){}
 function ls(k,d){var v=S[k.slice(3)];return v===undefined?d:v}
-function build(){var st=JSON.stringify({members:members,freqs:freqs,posts:posts}).replace(/</g,"\\u003c");return SRC.replace(/(<script type="application\/json" id="state">)[\s\S]*?(<\/script>)/,function(m,a,b){return a+st+b})}
+function build(){var st=JSON.stringify({members:members,freqs:freqs,posts:posts,konto:konto}).replace(/</g,"\\u003c");return SRC.replace(/(<script type="application\/json" id="state">)[\s\S]*?(<\/script>)/,function(m,a,b){return a+st+b})}
 function pmsg(t){var s=document.getElementById("pst");if(s)s.textContent=t}
 function download(){var b=new Blob([build()],{type:"text/html"});var a=document.createElement("a");a.href=URL.createObjectURL(b);a.download="index.html";document.body.appendChild(a);a.click();a.remove();pmsg("Datei gespeichert. Lade sie auf deinen Webspace hoch.")}
 var DB=null,EDIT=false,T={},UID=null,NAME="",ROOM=null;
 function sv(k,v){if(!EDIT)return false;return true}
-function lock(){if(EDIT)return;document.querySelectorAll("#view input,#view textarea").forEach(function(i){i.disabled=true});document.querySelectorAll("#pf,#view [data-add],#view [data-rm],#view [data-fa],#view [data-fr],#view [data-del],#view #rs").forEach(function(b){b.hidden=true})}
+function lock(){if(EDIT)return;document.querySelectorAll("#view input,#view textarea").forEach(function(i){i.disabled=true});document.querySelectorAll("#pf,#kf,#view [data-kd],#view [data-add],#view [data-rm],#view [data-fa],#view [data-fr],#view [data-del],#view #rs").forEach(function(b){b.hidden=true})}
 function apply(k,s){if(!s.exists)return;var v=s.data().v;if(!Array.isArray(v))return;v=JSON.parse(JSON.stringify(v));
 if(EDIT&&document.activeElement&&/^(INPUT|TEXTAREA)$/.test(document.activeElement.tagName))return;
 if(k==="members"&&v.length===8)members=v;else if(k==="freqs")freqs=v;else if(k==="posts")posts=v;else return;
@@ -155,14 +158,16 @@ if(!posts){posts=[{t:"Willkommen bei den White Panthers",x:"Lest den Kodex und d
 
 var freqs=ls("wp-freqs",null);
 if(!freqs){freqs=["Hauptkanal","Einsatz","Notfall und Rückzug","Leitung","Verbündete"].map(function(n){return{n:n,f:"",s:""}})}
+var konto=ls("wp-konto",null);if(!Array.isArray(konto))konto=[];
 var fsub="freq";
+function renderKonto(){document.getElementById("view").innerHTML=views.konto();lock()}
 function renderFunk(){document.getElementById("view").innerHTML=views.funk();lock()}
 function saveM(){var ok=sv("wp-members",members);var s=document.getElementById("st");if(s)s.textContent=ok?"Entwurf, oben als Datei speichern":"Keine Berechtigung zum Speichern"}
 
 var views={
 start:function(){
 var h='<h2>Willkommen, Panther</h2><p class="lead">Dies ist unser Treffpunkt abseits des Spiels: Regeln lesen, Mitglieder verwalten, Beiträge schreiben.</p><div class="boards">';
-NAV.slice(1).forEach(function(n){var t={kodex:"Die Grundsätze, die jeder Panther kennt.",regeln:"Was im Spiel erlaubt ist und was nicht.",mitglieder:"Acht Ränge, frei bearbeitbar.",funk:"Aktuelle Frequenzen und Codewörter."}[n[0]];
+NAV.slice(1).forEach(function(n){var t={kodex:"Die Grundsätze, die jeder Panther kennt.",regeln:"Was im Spiel erlaubt ist und was nicht.",mitglieder:"Acht Ränge, frei bearbeitbar.",funk:"Aktuelle Frequenzen und Codewörter.",konto:"Einnahmen, Ausgaben und Kontostand."}[n[0]];
 h+='<a class="card" href="#'+n[0]+'"><h3>'+n[1]+'</h3><p class="meta">'+t+'</p></a>'});
 h+='</div><h3>Pinnwand</h3><div class="card" id="pf"><label for="pt">Titel</label><input id="pt" maxlength="80"><label for="pa">Autor</label><input id="pa" maxlength="40"><label for="px">Text</label><textarea id="px"></textarea><p><button class="pri" id="pb">Beitrag veröffentlichen</button></p></div><div id="pl"></div>';
 return h},
@@ -175,8 +180,18 @@ var h='<h2>Verhaltensregeln</h2><p class="lead">Diese Regeln gelten für alle Mi
 RULES.forEach(function(g){h+='<h3>'+g[0]+'</h3><div class="card">';g[1].forEach(function(r,i){h+='<div class="rule" style="'+(i?'':'border-top:0;padding-top:0')+'"><strong>'+r[0]+'</strong><p>'+r[1]+'</p></div>'});h+='</div>'});
 return h},
 mitglieder:function(){
-var h='<h2>Mitgliederliste</h2><p class="lead">Trage Name, Discord und Beitrittsdatum ein. Mit „Mitglied hinzufügen“ bekommt ein Rang weitere Zeilen. Nur die Leitung kann die Liste bearbeiten. Änderungen gelten erst, wenn du die Datei speicherst und hochlädst.</p><div class="bar"><button id="ex">Alle aufklappen</button><button id="rs" class="ghost">Liste leeren</button><span class="meta" id="tot"></span><span class="ok" id="st" role="status"></span></div><div id="rk"></div>';
+var h='<h2>Mitgliederliste</h2><p class="lead">Trage Name und Beitrittsdatum ein. Mit „Mitglied hinzufügen“ bekommt ein Rang weitere Zeilen. Nur die Leitung kann die Liste bearbeiten. Änderungen gelten erst, wenn du die Datei speicherst und hochlädst.</p><div class="bar"><button id="ex">Alle aufklappen</button><button id="rs" class="ghost">Liste leeren</button><span class="meta" id="tot"></span><span class="ok" id="st" role="status"></span></div><div id="rk"></div>';
 return h},
+konto:function(){
+var ein=0,aus=0;konto.forEach(function(e){if(e.t==="E")ein+=e.a;else aus+=e.a});
+function fmt(n){return n.toLocaleString("de-DE",{minimumFractionDigits:2,maximumFractionDigits:2})+" $"}
+var h='<h2>Gangkonto</h2><p class="lead">Alle Einnahmen und Ausgaben der Gang. Nur die Leitung kann Buchungen eintragen. Änderungen gelten erst, wenn du die Datei speicherst und hochlädst.</p>';
+h+='<div class="boards"><div class="card"><p class="meta">Einnahmen</p><h3>'+fmt(ein)+'</h3></div><div class="card"><p class="meta">Ausgaben</p><h3>'+fmt(aus)+'</h3></div><div class="card" style="border-left:6px solid var(--ice)"><p class="meta">Kontostand</p><h3>'+fmt(ein-aus)+'</h3></div></div>';
+h+='<div class="card" id="kf"><h3>Neue Buchung</h3><label for="kt">Art</label><select id="kt"><option value="E">Einnahme</option><option value="A">Ausgabe</option></select><label for="kb">Betrag in $</label><input id="kb" inputmode="decimal"><label for="kd">Beschreibung</label><input id="kd" maxlength="80"><label for="kw">Eingetragen von</label><input id="kw" maxlength="40"><p><button class="pri" id="kk">Buchung eintragen</button></p><p class="ok" id="km" role="status"></p></div>';
+h+='<div class="scroll"><table><tr><th>Datum</th><th>Beschreibung</th><th>Von</th><th>Betrag</th><th></th></tr>';
+if(!konto.length)h+='<tr><td colspan="5" class="meta">Noch keine Buchungen.</td></tr>';
+konto.forEach(function(e,i){var ein=e.t==="E";h+='<tr><td>'+esc(e.d||"")+'</td><td>'+esc(e.b)+'</td><td>'+esc(e.w||"")+'</td><td class="'+(ein?'pos':'neg')+'"><strong>'+(ein?'+':'−')+fmt(e.a)+'</strong></td><td><button class="ghost" data-kd="'+i+'">Löschen</button></td></tr>'});
+return h+'</table></div>'},
 funk:function(){
 var h='<h2>Funk und Codes</h2><p class="lead">Frequenzen und Codewörter für den Einsatz. Gib beides nie an Außenstehende weiter.</p><div class="sub"><button data-sub="freq" aria-pressed="'+(fsub==="freq")+'">Aktuelle Frequenzen</button><button data-sub="codes" aria-pressed="'+(fsub==="codes")+'">Codes</button></div>';
 if(fsub==="freq"){
@@ -197,7 +212,7 @@ var h="";var total=0;
 RANKS.forEach(function(r,i){var list=members[i];var cnt=list.filter(function(m){return m.n.trim()}).length;total+=cnt;
 var o=open===undefined?was[i]:open;
 h+='<details class="rank" data-r="'+i+'"'+(o?' open':'')+'><summary><b>'+r[0]+'</b><span class="meta">'+r[1]+'</span><span class="cnt">'+cnt+'</span></summary><div class="body">';
-list.forEach(function(m,j){h+='<div class="row"><input data-f="n" data-r="'+i+'" data-j="'+j+'" value="'+esc(m.n)+'" placeholder="Name" aria-label="Name"><input data-f="d" data-r="'+i+'" data-j="'+j+'" value="'+esc(m.d)+'" placeholder="Discord" aria-label="Discord"><input data-f="j" data-r="'+i+'" data-j="'+j+'" value="'+esc(m.j)+'" placeholder="Beigetreten" aria-label="Beigetreten"><button class="ghost" data-rm="'+i+'-'+j+'">Entfernen</button></div>'});
+list.forEach(function(m,j){h+='<div class="row r3"><input data-f="n" data-r="'+i+'" data-j="'+j+'" value="'+esc(m.n)+'" placeholder="Name" aria-label="Name"><input data-f="j" data-r="'+i+'" data-j="'+j+'" value="'+esc(m.j)+'" placeholder="Beigetreten" aria-label="Beigetreten"><button class="ghost" data-rm="'+i+'-'+j+'">Entfernen</button></div>'});
 h+='<p><button data-add="'+i+'">Mitglied hinzufügen</button></p></div></details>'});
 el.innerHTML=h;var t=document.getElementById("tot");if(t)t.textContent=total+" eingetragen";lock()}
 
@@ -215,6 +230,8 @@ else if(b.dataset.del!==undefined){posts.splice(+b.dataset.del,1);sv("wp-posts",
 else if(b.dataset.add!==undefined){members[+b.dataset.add].push({n:"",d:"",j:""});saveM();renderRanks()}
 else if(b.dataset.rm){var p=b.dataset.rm.split("-");members[+p[0]].splice(+p[1],1);if(!members[+p[0]].length)members[+p[0]].push({n:"",d:"",j:""});saveM();renderRanks()}
 else if(b.id==="dl"){download()}else if(b.id==="ed"){EDIT=false;setMode();route()}else if(b.id==="eb"){EDIT=true;setMode();route()}
+else if(b.id==="kk"){var ka=parseFloat(document.getElementById("kb").value.replace(",",".")),kd=document.getElementById("kd").value.trim(),km=document.getElementById("km");if(!(ka>0)||!kd){km.textContent="Bitte einen Betrag über 0 und eine Beschreibung eintragen.";return}konto.unshift({t:document.getElementById("kt").value,a:Math.round(ka*100)/100,b:kd,w:document.getElementById("kw").value.trim(),d:new Date().toLocaleDateString("de-DE")});sv("wp-konto",konto);renderKonto()}
+else if(b.dataset.kd!==undefined){konto.splice(+b.dataset.kd,1);sv("wp-konto",konto);renderKonto()}
 else if(b.dataset.sub){fsub=b.dataset.sub;renderFunk()}
 else if(b.dataset.fa!==undefined){freqs.push({n:"",f:"",s:""});sv("wp-freqs",freqs);renderFunk()}
 else if(b.dataset.fr!==undefined){freqs.splice(+b.dataset.fr,1);sv("wp-freqs",freqs);renderFunk()}
@@ -228,4 +245,6 @@ window.addEventListener("hashchange",route);route();
 (function(){var m=document.getElementById("mode");
 function setMode(){m.innerHTML=EDIT?'Bearbeitungsmodus, gilt nur in deinem Browser. <button class="pri" id="dl">Als Datei speichern</button> <button class="ghost" id="ed">Bearbeiten beenden</button> <span id="pst" class="ok"></span>':'';var f=document.getElementById("foot");if(f)f.hidden=EDIT}
 window.setMode=setMode;setMode();route()})();
-</script></body></html>
+</script>
+</body>
+</html>
