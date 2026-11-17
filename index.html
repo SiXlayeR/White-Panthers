@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>White Panthers – Forum</title>
+<link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@700;900&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#eceae4;--surface:#f8f7f3;--ink:#171a1d;--mute:#5d6469;--line:#cfccc3;--ice:#2f6a8d;--ice-ink:#fff;--spot:#171a1d14;color-scheme:light;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#14181b;--surface:#1d2226;--ink:#eceae4;--mute:#9aa3a9;--line:#323a40;--ice:#7fb7d6;--ice-ink:#10181d;--spot:#eceae410;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#14181b;--surface:#1d2226;--ink:#eceae4;--mute:#9aa3a9;--line:#323a40;--ice:#7fb7d6;--ice-ink:#10181d;--spot:#eceae410;color-scheme:dark}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 16px/1.6 "IBM Plex Sans",system-ui,sans-serif}
+h1,h2,h3{font-family:"Big Shoulders Display","Arial Narrow",Impact,sans-serif;font-weight:900;line-height:1.05;margin:0}
+header{background:var(--surface);border-bottom:2px solid var(--ink);position:relative;overflow:hidden}
+header::before{content:"";position:absolute;inset:0;background:
+radial-gradient(circle at 12% 30%,transparent 0 14px,var(--spot) 15px 26px,transparent 27px),
+radial-gradient(circle at 38% 75%,transparent 0 10px,var(--spot) 11px 20px,transparent 21px),
+radial-gradient(circle at 66% 25%,transparent 0 16px,var(--spot) 17px 30px,transparent 31px),
+radial-gradient(circle at 90% 70%,transparent 0 12px,var(--spot) 13px 23px,transparent 24px)}
+.wrap{max-width:920px;margin:0 auto;padding:0 18px;position:relative}
+.brand{padding:26px 0 14px}
+.brand h1{font-size:clamp(46px,12vw,92px);letter-spacing:.01em}
+.brand p{margin:4px 0 0;color:var(--mute)}
+nav{display:flex;gap:4px;overflow-x:auto;padding-bottom:0}
+nav a{padding:10px 14px;text-decoration:none;color:var(--mute);font-weight:600;white-space:nowrap;border-bottom:4px solid transparent}
+nav a[aria-current=page]{color:var(--ink);border-bottom-color:var(--ice)}
+nav a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible{outline:3px solid var(--ice);outline-offset:2px}
+main{padding:26px 0 60px}
+h2{font-size:clamp(34px,7vw,48px);margin-bottom:6px}
+h3{font-size:26px;margin:26px 0 6px}
+.lead{color:var(--mute);margin:0 0 20px;max-width:62ch}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:6px;padding:16px 18px;margin:0 0 12px}
+.card h3{margin:0 0 4px;font-size:24px}
+.card p{margin:4px 0}
+.meta{color:var(--mute);font-size:14px}
+.boards{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:12px;margin-bottom:24px}
+.boards a{text-decoration:none;color:inherit;display:block;border-left:6px solid var(--ice)}
+.boards a:hover h3{color:var(--ice)}
+.art{display:grid;grid-template-columns:auto 1fr;gap:4px 14px;padding:12px 0;border-top:1px solid var(--line)}
+.art b{font-family:"Big Shoulders Display",sans-serif;font-size:22px;color:var(--ice)}
+.art p{margin:0}
+.rule{padding:12px 0;border-top:1px solid var(--line)}
+.rule p{margin:2px 0 0}
+button{font:inherit;font-weight:600;border:1px solid var(--ink);background:var(--surface);color:var(--ink);border-radius:4px;padding:7px 14px;cursor:pointer}
+button.pri{background:var(--ice);color:var(--ice-ink);border-color:var(--ice)}
+button.ghost{border-color:var(--line);color:var(--mute);padding:5px 10px}
+input,textarea,select{font:inherit;color:var(--ink);background:var(--bg);border:1px solid var(--line);border-radius:4px;padding:8px 10px;width:100%}
+textarea{min-height:90px;resize:vertical}
+label{display:block;font-weight:600;font-size:14px;margin:12px 0 4px}
+.rank{background:var(--surface);border:1px solid var(--line);border-radius:6px;margin-bottom:10px;overflow:hidden}
+.rank>summary{cursor:pointer;padding:12px 16px;display:flex;align-items:baseline;gap:12px;list-style:none}
+.rank>summary::-webkit-details-marker{display:none}
+.rank>summary b{font-family:"Big Shoulders Display",sans-serif;font-size:26px;font-weight:900}
+.rank>summary .meta{flex:1}
+.rank>summary .cnt{font-weight:600;color:var(--ice)}
+.rank .body{padding:2px 16px 14px;border-top:1px solid var(--line)}
+.row{display:grid;grid-template-columns:1.3fr 1.1fr .9fr auto;gap:8px;margin-top:10px}
+@media(max-width:620px){.row{grid-template-columns:1fr 1fr}.row .ghost{grid-column:span 2}}
+.bar{display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin-bottom:16px}
+.bar .meta{margin-left:auto}
+table{width:100%;border-collapse:collapse;background:var(--surface);border:1px solid var(--line)}
+td,th{padding:9px 12px;text-align:left;border-bottom:1px solid var(--line);vertical-align:top}
+th{font-family:"Big Shoulders Display",sans-serif;font-size:20px}
+.scroll{overflow-x:auto}
+.ok{color:var(--ice);font-weight:600;min-height:1.5em}
+#mode{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var(--bg);margin:0 0 8px;padding:8px 0}
+#mode:empty{display:none}
+.chip{display:inline-block;border:1px solid var(--line);border-left:4px solid var(--ice);border-radius:4px;padding:2px 10px;margin:0 6px 6px 0;background:var(--bg)}
+.sub{display:flex;gap:8px;margin-bottom:16px}
+.sub button[aria-pressed=true]{background:var(--ice);color:var(--ice-ink);border-color:var(--ice)}
+</style>
+</head>
+<body>
+<header>
+<div class="wrap">
+<div class="brand"><h1>White Panthers</h1><p>Arma 3 RP · interne Gangseite · nur für Mitglieder und Anwärter</p></div>
+<nav id="nav"></nav>
+</div>
+</header>
+<main><div class="wrap"><p class="meta" id="mode" role="status"></p><div id="view"></div></div></main>
+<footer class="wrap" id="foot" style="padding-bottom:30px"><button class="ghost" id="eb">Bearbeiten</button></footer>
+
+<script type="application/json" id="state">{}</script>
+<script>
+var SRC="<!DOCTYPE html>\n"+document.documentElement.outerHTML;
+var RANKS=[
+["Alpha Panther","Führt die Gang, trifft Endentscheidungen."],
+["White Shadow","Stellvertretung, Strategie und Verhandlungen."],
+["Ice Claw","Führt Einsätze und Teams im Feld."],
+["Frost Guard","Sicherheit, Durchsetzung, Schutz des Reviers."],
+["Snow Hunter","Erfahrener Kämpfer, trägt Einsätze."],
+["White Fur","Vollwertiges Mitglied im Alltag und Einsatz."],
+["Young Panther","Probezeit, nimmt an Einweisungen teil."],
+["Cub","Anwärter in der Probezeit."]];
+var NAV=[["start","Start"],["funk","Funk & Codes"],["mitglieder","Mitglieder"],["kodex","Kodex"],["regeln","Regeln"]];
+var KODEX=[
+["Loyalität","Die Gang steht über dem Einzelnen. Wer einen Panther angreift, greift alle an."],
+["Schweigen","Was intern besprochen wird, bleibt intern. Keine Namen, Pläne oder Treffpunkte nach außen."],
+["Ehre","Ein Wort gilt. Wir brechen keine Abmachungen, die wir mit Verbündeten oder Gegnern getroffen haben."],
+["Respekt","Wir respektieren Rang, Revier und die Rollen anderer Fraktionen, auch von Feinden."],
+["Disziplin","Befehle im Einsatz werden befolgt. Kritik gibt es danach, nicht währenddessen."],
+["Zusammenhalt","Verletzte und Gefangene lassen wir nicht zurück, wenn es irgendwie möglich ist."],
+["Weißer Pelz","Wir treten ruhig und geplant auf. Wir suchen den Vorteil, nicht den Streit um des Streits willen."],
+["Rangordnung","Wer den höheren Rang trägt, führt und trägt die Verantwortung. Wer den niedrigeren trägt, folgt und meldet Probleme offen."],
+["Revier","Unser Gebiet verteidigen wir gemeinsam. Neue Reviere werden nur mit Zustimmung der Leitung beansprucht."],
+["Beute und Kasse","Beute gehört der Gang. Die Aufteilung entscheidet die Leitung. Wer in die eigene Tasche wirtschaftet, handelt gegen den Kodex."],
+["Ehrlichkeit","Wir belügen einander nicht. Fehler werden gemeldet und nicht versteckt."],
+["Verbündete und Feinde","Bündnisse, Waffenstillstände und Kriegserklärungen beschließt allein die Leitung. Kein Panther macht auf eigene Faust Feinde."],
+["Verrat","Wer die Gang verrät oder Interna weitergibt, wird ausgeschlossen. Eine Rückkehr gibt es nicht."],
+["Eigenverantwortung","Jeder Panther kennt Kodex und Regeln und steht für sein Handeln selbst ein."],
+["Austritt","Wer geht, geht in Frieden, wenn er schweigt und alles Gang-Eigentum zurückgibt."],
+["Gemeinsamer Sieg","Der Erfolg gehört der Gang, nicht dem Einzelnen. Wir feiern zusammen und tragen Verluste zusammen."]];
+var RULES=[
+["Allgemein",[
+["Respekt außerhalb des Rollenspiels","Was im Spiel passiert, bleibt im Spiel. Persönliche Beleidigungen, Rassismus und Hetze führen zum sofortigen Ausschluss."],
+["Anwesenheit","Wer länger als 14 Tage ohne Abmeldung fehlt, rutscht einen Rang ab. Abmeldungen laufen über den Bereich Start."],
+["Voice und Discord","Beim Einsatz sind Teamspeak oder Discord Pflicht. Mikrofon-Qualität wird erwartet."]]],
+["Rollenspiel",[
+["Fail-RP vermeiden","Keine Aktionen, die in der Realität unmöglich wären. Verletzungen und Tod werden ausgespielt."],
+["Kein Metagaming","Wissen aus Discord, Streams oder Voice darf nicht im Spiel verwendet werden, wenn die Figur es nicht erfahren hat."],
+["Kein Powergaming","Handlungen anderer Spieler werden nicht erzwungen. Jeder bekommt die Chance zu reagieren."],
+["Neues Leben","Nach dem Tod weiß die Figur nichts mehr über die Umstände und kehrt nicht zum Tatort zurück."],
+["Kein Combat-Logging","Wer mitten in einer Szene das Spiel verlässt, wird mit Rangverlust oder Ausschluss bestraft."]]],
+["Verhalten im Einsatz",[
+["Waffen und Ausrüstung","Gezogen wird nur mit RP-Grund oder auf Befehl. Safezones sind tabu."],
+["Geiseln und Überfälle","Immer erst Ansprache und Angebot zur Kooperation. Kein sinnloses Töten."],
+["Fahrzeuge","Gang-Fahrzeuge werden pfleglich behandelt. Rammen und Zerstören nur im Einsatz."]]],
+["Sanktionen",[
+["Stufen","Verwarnung, Abmahnung, Rangverlust, Ausschluss. Bei schweren Verstößen kann direkt ausgeschlossen werden."],
+["Einspruch","Jede Sanktion darf innerhalb von 3 Tagen schriftlich beim Co-Leader angefochten werden."]]]];
+var CODES=[
+["Panther One","Leader im Einsatz"],["White","Alles ruhig, Lage ist sicher"],["Snowfall","Rückzug und Sammeln am Treffpunkt"],
+["Paw","Verstärkung wird benötigt"],["Fur Down","Verletzter Kamerad, Sanitäter nötig"],["Dark Spot","Polizei oder Gegner in der Nähe"]];
+
+var S={};try{S=JSON.parse(document.getElementById("state").textContent)}catch(e){}
+function ls(k,d){var v=S[k.slice(3)];return v===undefined?d:v}
+function build(){var st=JSON.stringify({members:members,freqs:freqs,posts:posts}).replace(/</g,"\\u003c");return SRC.replace(/(<script type="application\/json" id="state">)[\s\S]*?(<\/script>)/,function(m,a,b){return a+st+b})}
+function pmsg(t){var s=document.getElementById("pst");if(s)s.textContent=t}
+function download(){var b=new Blob([build()],{type:"text/html"});var a=document.createElement("a");a.href=URL.createObjectURL(b);a.download="index.html";document.body.appendChild(a);a.click();a.remove();pmsg("Datei gespeichert. Lade sie auf deinen Webspace hoch.")}
+var DB=null,EDIT=false,T={},UID=null,NAME="",ROOM=null;
+function sv(k,v){if(!EDIT)return false;return true}
+function lock(){if(EDIT)return;document.querySelectorAll("#view input,#view textarea").forEach(function(i){i.disabled=true});document.querySelectorAll("#pf,#view [data-add],#view [data-rm],#view [data-fa],#view [data-fr],#view [data-del],#view #rs").forEach(function(b){b.hidden=true})}
+function apply(k,s){if(!s.exists)return;var v=s.data().v;if(!Array.isArray(v))return;v=JSON.parse(JSON.stringify(v));
+if(EDIT&&document.activeElement&&/^(INPUT|TEXTAREA)$/.test(document.activeElement.tagName))return;
+if(k==="members"&&v.length===8)members=v;else if(k==="freqs")freqs=v;else if(k==="posts")posts=v;else return;
+var h=(location.hash||"#start").slice(1);if(h==="start")renderPosts();else if(h==="mitglieder")renderRanks();else if(h==="funk")renderFunk()}
+function esc(s){return String(s).replace(/[&<>"]/g,function(c){return{"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]})}
+
+var members=ls("wp-members",null);
+if(!members||members.length!==8){members=RANKS.map(function(){return[{n:"",d:"",j:""}]})}
+var posts=ls("wp-posts",null);
+if(!posts){posts=[{t:"Willkommen bei den White Panthers",x:"Lest den Kodex und die Regeln, bevor ihr euch in die Mitgliederliste eintragt. Neue Beiträge verfasst nur die Leitung.",a:"Leitung",d:"17.11.2026"}]}
+
+var freqs=ls("wp-freqs",null);
+if(!freqs){freqs=["Hauptkanal","Einsatz","Notfall und Rückzug","Leitung","Verbündete"].map(function(n){return{n:n,f:"",s:""}})}
+var fsub="freq";
+function renderFunk(){document.getElementById("view").innerHTML=views.funk();lock()}
+function saveM(){var ok=sv("wp-members",members);var s=document.getElementById("st");if(s)s.textContent=ok?"Entwurf, oben als Datei speichern":"Keine Berechtigung zum Speichern"}
+
+var views={
+start:function(){
+var h='<h2>Willkommen, Panther</h2><p class="lead">Dies ist unser Treffpunkt abseits des Spiels: Regeln lesen, Mitglieder verwalten, Beiträge schreiben.</p><div class="boards">';
+NAV.slice(1).forEach(function(n){var t={kodex:"Die Grundsätze, die jeder Panther kennt.",regeln:"Was im Spiel erlaubt ist und was nicht.",mitglieder:"Acht Ränge, frei bearbeitbar.",funk:"Aktuelle Frequenzen und Codewörter."}[n[0]];
+h+='<a class="card" href="#'+n[0]+'"><h3>'+n[1]+'</h3><p class="meta">'+t+'</p></a>'});
+h+='</div><h3>Pinnwand</h3><div class="card" id="pf"><label for="pt">Titel</label><input id="pt" maxlength="80"><label for="pa">Autor</label><input id="pa" maxlength="40"><label for="px">Text</label><textarea id="px"></textarea><p><button class="pri" id="pb">Beitrag veröffentlichen</button></p></div><div id="pl"></div>';
+return h},
+kodex:function(){
+var h='<h2>Der Kodex</h2><p class="lead">Wer das Fell der White Panthers trägt, lebt nach diesen Artikeln. Sie gelten über den Spielregeln und werden von der Leitung durchgesetzt.</p><div class="card">';
+KODEX.forEach(function(k,i){h+='<div class="art" style="'+(i?'':'border-top:0')+'"><b>§'+(i+1)+'</b><p><strong>'+k[0]+'.</strong> '+k[1]+'</p></div>'});
+return h+'</div>'},
+regeln:function(){
+var h='<h2>Verhaltensregeln</h2><p class="lead">Diese Regeln gelten für alle Mitglieder, vom Anwärter bis zum Leader.</p>';
+RULES.forEach(function(g){h+='<h3>'+g[0]+'</h3><div class="card">';g[1].forEach(function(r,i){h+='<div class="rule" style="'+(i?'':'border-top:0;padding-top:0')+'"><strong>'+r[0]+'</strong><p>'+r[1]+'</p></div>'});h+='</div>'});
+return h},
+mitglieder:function(){
+var h='<h2>Mitgliederliste</h2><p class="lead">Trage Name, Discord und Beitrittsdatum ein. Mit „Mitglied hinzufügen“ bekommt ein Rang weitere Zeilen. Nur die Leitung kann die Liste bearbeiten. Änderungen gelten erst, wenn du die Datei speicherst und hochlädst.</p><div class="bar"><button id="ex">Alle aufklappen</button><button id="rs" class="ghost">Liste leeren</button><span class="meta" id="tot"></span><span class="ok" id="st" role="status"></span></div><div id="rk"></div>';
+return h},
+funk:function(){
+var h='<h2>Funk und Codes</h2><p class="lead">Frequenzen und Codewörter für den Einsatz. Gib beides nie an Außenstehende weiter.</p><div class="sub"><button data-sub="freq" aria-pressed="'+(fsub==="freq")+'">Aktuelle Frequenzen</button><button data-sub="codes" aria-pressed="'+(fsub==="codes")+'">Codes</button></div>';
+if(fsub==="freq"){
+h+='<p class="meta">Nur die Leitung kann Frequenzen ändern. Änderungen gelten erst, wenn du die Datei speicherst und hochlädst.</p>';
+freqs.forEach(function(q,i){h+='<div class="row"><input data-q="n" data-i="'+i+'" value="'+esc(q.n)+'" placeholder="Kanal" aria-label="Kanal"><input data-q="f" data-i="'+i+'" value="'+esc(q.f)+'" placeholder="Frequenz, z. B. 43.5" aria-label="Frequenz" inputmode="decimal"><input data-q="s" data-i="'+i+'" value="'+esc(q.s)+'" placeholder="Hinweis oder gültig seit" aria-label="Hinweis"><button class="ghost" data-fr="'+i+'">Entfernen</button></div>'});
+return h+'<p><button data-fa="1">Kanal hinzufügen</button></p>'}
+h+='<div class="scroll"><table><tr><th>Code</th><th>Bedeutung</th></tr>';
+CODES.forEach(function(c){h+='<tr><td><strong>'+c[0]+'</strong></td><td>'+c[1]+'</td></tr>'});
+return h+'</table></div>'}
+};
+
+function renderPosts(){var el=document.getElementById("pl");if(!el)return;
+el.innerHTML=posts.map(function(p,i){return '<div class="card"><h3>'+esc(p.t)+'</h3><p class="meta">'+esc(p.a)+' · '+esc(p.d)+'</p><p>'+esc(p.x).replace(/\n/g,"<br>")+'</p><button class="ghost" data-del="'+i+'">Löschen</button></div>'}).join("");lock()}
+
+function renderRanks(open){var el=document.getElementById("rk");if(!el)return;
+var was=[].map.call(el.querySelectorAll("details"),function(d){return d.open});
+var h="";var total=0;
+RANKS.forEach(function(r,i){var list=members[i];var cnt=list.filter(function(m){return m.n.trim()}).length;total+=cnt;
+var o=open===undefined?was[i]:open;
+h+='<details class="rank" data-r="'+i+'"'+(o?' open':'')+'><summary><b>'+r[0]+'</b><span class="meta">'+r[1]+'</span><span class="cnt">'+cnt+'</span></summary><div class="body">';
+list.forEach(function(m,j){h+='<div class="row"><input data-f="n" data-r="'+i+'" data-j="'+j+'" value="'+esc(m.n)+'" placeholder="Name" aria-label="Name"><input data-f="d" data-r="'+i+'" data-j="'+j+'" value="'+esc(m.d)+'" placeholder="Discord" aria-label="Discord"><input data-f="j" data-r="'+i+'" data-j="'+j+'" value="'+esc(m.j)+'" placeholder="Beigetreten" aria-label="Beigetreten"><button class="ghost" data-rm="'+i+'-'+j+'">Entfernen</button></div>'});
+h+='<p><button data-add="'+i+'">Mitglied hinzufügen</button></p></div></details>'});
+el.innerHTML=h;var t=document.getElementById("tot");if(t)t.textContent=total+" eingetragen";lock()}
+
+function route(){
+var k=(location.hash||"#start").slice(1);if(!views[k])k="start";
+document.getElementById("nav").innerHTML=NAV.map(function(n){return '<a href="#'+n[0]+'"'+(n[0]===k?' aria-current="page"':'')+'>'+n[1]+'</a>'}).join("");
+document.getElementById("view").innerHTML=views[k]();
+if(k==="start")renderPosts();if(k==="mitglieder")renderRanks(false);
+lock();window.scrollTo(0,0)}
+
+document.addEventListener("click",function(e){var b=e.target.closest("button");if(!b)return;
+if(b.id==="pb"){var t=document.getElementById("pt").value.trim(),x=document.getElementById("px").value.trim(),a=document.getElementById("pa").value.trim();if(!t||!x)return;
+posts.unshift({t:t,x:x,a:a||"Unbekannt",d:new Date().toLocaleDateString("de-DE")});sv("wp-posts",posts);route()}
+else if(b.dataset.del!==undefined){posts.splice(+b.dataset.del,1);sv("wp-posts",posts);renderPosts()}
+else if(b.dataset.add!==undefined){members[+b.dataset.add].push({n:"",d:"",j:""});saveM();renderRanks()}
+else if(b.dataset.rm){var p=b.dataset.rm.split("-");members[+p[0]].splice(+p[1],1);if(!members[+p[0]].length)members[+p[0]].push({n:"",d:"",j:""});saveM();renderRanks()}
+else if(b.id==="dl"){download()}else if(b.id==="ed"){EDIT=false;setMode();route()}else if(b.id==="eb"){EDIT=true;setMode();route()}
+else if(b.dataset.sub){fsub=b.dataset.sub;renderFunk()}
+else if(b.dataset.fa!==undefined){freqs.push({n:"",f:"",s:""});sv("wp-freqs",freqs);renderFunk()}
+else if(b.dataset.fr!==undefined){freqs.splice(+b.dataset.fr,1);sv("wp-freqs",freqs);renderFunk()}
+else if(b.id==="ex"){var all=document.querySelectorAll(".rank");var op=b.textContent==="Alle aufklappen";renderRanks(op);b.textContent=op?"Alle zuklappen":"Alle aufklappen"}
+else if(b.id==="rs"){if(confirm("Die gesamte Mitgliederliste leeren?")){members=RANKS.map(function(){return[{n:"",d:"",j:""}]});saveM();renderRanks()}}});
+document.addEventListener("input",function(e){var f=e.target.dataset;if(!f||!f.f)return;members[+f.r][+f.j][f.f]=e.target.value;saveM();
+if(f.f==="n"){var t=0;members.forEach(function(l,i){var c=l.filter(function(m){return m.n.trim()}).length;t+=c;var s=document.querySelector('.rank[data-r="'+i+'"] .cnt');if(s)s.textContent=c});document.getElementById("tot").textContent=t+" eingetragen"}});
+document.addEventListener("input",function(e){var f=e.target.dataset;if(!f||!f.q)return;freqs[+f.i][f.q]=e.target.value;sv("wp-freqs",freqs)});
+window.addEventListener("hashchange",route);route();
+
+(function(){var m=document.getElementById("mode");
+function setMode(){m.innerHTML=EDIT?'Bearbeitungsmodus, gilt nur in deinem Browser. <button class="pri" id="dl">Als Datei speichern</button> <button class="ghost" id="ed">Bearbeiten beenden</button> <span id="pst" class="ok"></span>':'';var f=document.getElementById("foot");if(f)f.hidden=EDIT}
+window.setMode=setMode;setMode();route()})();
+</script>
+</body>
+</html>
